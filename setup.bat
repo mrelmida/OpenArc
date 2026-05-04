@@ -24,6 +24,11 @@ if not exist "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" (
 
 call "C:\Program Files (x86)\Intel\oneAPI\setvars.bat" intel64 --force
 
+if defined LEVEL_ZERO_V1_SDK_PATH (
+    echo %INCLUDE% | findstr /I /C:"%LEVEL_ZERO_V1_SDK_PATH%\include" >nul || set "INCLUDE=%INCLUDE%;%LEVEL_ZERO_V1_SDK_PATH%\include"
+    echo %LIB% | findstr /I /C:"%LEVEL_ZERO_V1_SDK_PATH%\lib" >nul || set "LIB=%LIB%;%LEVEL_ZERO_V1_SDK_PATH%\lib"
+)
+
 echo installing gpu-metrics (soft dependency)...
 uv pip install ./gpu-metrics
 if %errorlevel% neq 0 (
