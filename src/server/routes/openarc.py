@@ -70,7 +70,7 @@ def get_gpu_info_with_metrics():
                     used_vram=used_vram_mb,
                     usage=gpu_data.get("utilization", 0.0),
                     is_shared=is_shared,
-                ).dict()
+                ).model_dump()
             )
     except ImportError:
         is_gpu_metrics_installed = False
