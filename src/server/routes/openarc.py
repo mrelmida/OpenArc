@@ -102,8 +102,6 @@ def get_cpu_info():
 def get_npu_info():
     npus = []
     try:
-        import openvino as ov
-
         core = ov.Core()
         devices = core.available_devices
         for device in devices:
