@@ -64,7 +64,7 @@ def get_gpu_info_with_metrics():
 
             gpus.append(
                 GPUInfo(
-                    id=idx_str,
+                    id=f"GPU.{idx_str}",
                     name=name,
                     total_vram=total_vram_mb,
                     used_vram=used_vram_mb,
